@@ -23,7 +23,7 @@
         "fields": ["2024", "2023", "Growth %"]
       }
     },
-    {"calculate": "datum['2024']", "as": "Tourists (millions))"}
+    {"calculate": "datum['2024']", "as": "Tourists 2024"}
   ],
   "mark": {"type": "geoshape"},
   "encoding": {
