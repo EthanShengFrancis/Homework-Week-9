@@ -51,7 +51,6 @@
               "as": "TotalArrivals2024"
             }]
           },
-
           {
             "calculate": "datum['Tourists 2024'] / datum['TotalArrivals2024'] * 100",
             "as": "Arrivals Percentage"
@@ -61,7 +60,7 @@
       "encoding": {
         "color": {
           "condition": {
-              "test": "isValid(datum['Tourists 2024'])",
+              "test": "isValid(datum['Arrivals Percentage']) && datum['Arrivals Percentage'] > 0",
               "field": "Arrivals Percentage",
               "type": "quantitative",
               "scale": {"scheme": "greens"},
