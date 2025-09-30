@@ -43,15 +43,27 @@
             "fields": ["2024", "2023", "Growth %"]
           }
         },
-        {"calculate": "toNumber(datum['2024'])", "as": "Tourists 2024"}
+        {"calculate": "toNumber(datum['2024'])", "as": "Tourists 2024"},
+          {
+            "joinaggregate": [{
+              "op": "sum",
+              "field": "Tourists 2024",
+              "as": "TotalArrivals2024"
+            }]
+          },
+
+          {
+            "calculate": "datum['Tourists 2024'] / datum['TotalArrivals2024'] * 100",
+            "as": "Arrivals Share (%)"
+          }
       ],
       "mark": {"type": "geoshape"},
       "encoding": {
         "color": {
-          "field": "Tourists 2024",
+          "field": "Arrivals Share (%)",
           "type": "quantitative",
           "scale": {"scheme": "greens"},
-          "legend": {"title": "Arrivals (millions)"}
+          "legend": {"title": "Arrivals (% of total)"}
         },
         "tooltip": [
           {"field": "properties.NAME", "type": "nominal", "title": "Country"},
