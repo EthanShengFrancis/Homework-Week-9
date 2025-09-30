@@ -54,20 +54,25 @@
 
           {
             "calculate": "datum['Tourists 2024'] / datum['TotalArrivals2024'] * 100",
-            "as": "Arrivals Share (%)"
+            "as": "Arrivals Percentage"
           }
       ],
       "mark": {"type": "geoshape"},
       "encoding": {
         "color": {
-          "field": "Arrivals Share (%)",
-          "type": "quantitative",
-          "scale": {"scheme": "greens"},
-          "legend": {"title": "Arrivals (% of total)"}
-        },
+          "condition": {
+              "test": "isValid(datum['Arrivals Percentage'])",
+              "field": "Arrivals Percentage",
+              "type": "quantitative",
+              "scale": {"scheme": "greens"},
+              "legend": {"title": "Arrivals (% of total)"}
+            },
+            "value": "lightgray"
+          },
         "tooltip": [
           {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-          {"field": "Tourists 2024", "type": "quantitative"}
+          {"field": "Tourists 2024", "type": "quantitative"},
+          {"field": "Arrivals Percentage", "type": "quantitative"}
         ]
       }
     }
