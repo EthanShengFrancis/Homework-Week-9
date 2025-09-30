@@ -1,6 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Top 20 Visitor Arrivals to Malaysia by Country of Nationality (2024)",
+"title": {
+  "text": "Top 20 Visitor Arrivals to Malaysia by Country of Nationality (2024)",
+  "font": "Times New Roman",
+  "fontSize": 18
+  },
   "width": 800,
   "height": 400,
   "projection": {"type": "equalEarth"},
@@ -19,14 +23,19 @@
         "fields": ["2024", "2023", "Growth %"]
       }
     },
-    {"calculate": "datum['2024']", "as": "Tourists 2024"}
+    {"calculate": "datum['2024']", "as": "Tourists (millions))"}
   ],
   "mark": {"type": "geoshape"},
   "encoding": {
     "color": {
       "field": "Tourists 2024",
       "type": "quantitative",
-      "scale": {"type": "log"}
+      "scale": {
+      "scheme": "greens"
+      },
+      "legend": {
+      "title": "Arrivals (millions)" 
+      }
     },
     "tooltip": [
       {"field": "properties.NAME", "type": "nominal", "title": "Country"},
