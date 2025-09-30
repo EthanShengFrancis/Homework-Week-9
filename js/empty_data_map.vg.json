@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "COVID-19 Active Cases (10 Oct 2020)",
+  "title": "Top 20 Visitor Arrivals to Malaysia by Country of Nationality (2024)",
   "width": 800,
   "height": 500,
   "data": {
@@ -26,27 +26,25 @@
           "lookup": "properties.NAME",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/data/covid_10_10_2020.csv"
+              "url": "https://raw.githubusercontent.com/EthanShengFrancis/Homework-Week-9/main/data/Malaysia_choropleth.csv"
             },
             "key": "Country",
-            "fields": ["Active"]
+            "fields": ["2024", "2023", "Growth %"]
           }
         }
       ],
       "mark": {"type": "geoshape", "stroke": "white"},
       "encoding": {
         "color": {
-          "field": "Active",
+          "field": "2024",
           "type": "quantitative",
-          "scale": {
-            "type": "threshold",
-            "domain": [10000, 100000, 500000],
-            "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
-          }
+          "scale": {"type": "log"}
         },
         "tooltip": [
           {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-          {"field": "Active", "type": "quantitative"}
+          {"field": "2024", "type": "quantitative", "title": "Arrivals 2024"},
+          {"field": "2023", "type": "quantitative", "title": "Arrivals 2023"},
+          {"field": "Growth %", "type": "quantitative", "title": "Growth (%)"}
         ]
       }
     }
