@@ -61,7 +61,7 @@
       "encoding": {
         "color": {
           "condition": {
-              "test": "isValid(datum['Arrivals Percentage'])",
+              "test": "isValid(datum['Tourists 2024'])",
               "field": "Arrivals Percentage",
               "type": "quantitative",
               "scale": {"scheme": "greens"},
